@@ -19,7 +19,7 @@ def subscribe_intent_callback(hermes, intent_message):
     intentname = intent_message.intent.intent_name
 
     if intentname == user_intent("Spiegel"):
-        end_session(hermes, intent_message, "Du bist doch das schönste was es gibt auf dieser Welt!")
+        end_session(hermes, "Du  bist das schönste vom ganyen Land und auf dieser Welt!")
 
     hermes.publish_end_session(intent_message.session_id, result_sentence)
 
@@ -34,6 +34,5 @@ if __name__ == "__main__":
 
     mqtt_opts = MqttOptions(username=MQTT_USERNAME, password=MQTT_PASSWORD, broker_address=MQTT_BROKER_ADDRESS)
     with Hermes(mqtt_options=mqtt_opts) as h:
-        h.subscribe_intent("mcitar:Spiegel", subscribe_intent_callback)\
-            .start()
+        h.subscribe_intent("mcitar:Spiegel", subscribe_intent_callback).loop_forever()
 
