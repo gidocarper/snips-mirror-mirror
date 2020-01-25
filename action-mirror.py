@@ -10,18 +10,11 @@ MQTT_USERNAME = None
 MQTT_PASSWORD = None
 
 
-
 def user_intent(intentname):
     return USERNAME_INTENTS + ":" + intentname
 
-
 def subscribe_intent_callback(hermes, intent_message):
-    intentname = intent_message.intent.intent_name
-
-    if intentname == user_intent("Spiegel"):
-        end_session(hermes, "Du  bist das schönste vom ganyen Land und auf dieser Welt!")
-
-    hermes.publish_end_session(intent_message.session_id, result_sentence)
+    hermes.publish_end_session(intent_message.session_id, "Du  bist das schönste vom ganyen Land und auf dieser Welt!")
 
 if __name__ == "__main__":
     snips_config = toml.load('/etc/snips.toml')
